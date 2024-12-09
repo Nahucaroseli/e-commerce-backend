@@ -6,6 +6,7 @@ const router = express.Router();
 
 
 router.post("/registro",async (req,res) =>{
+    console.log('Solicitud recibida:', req.body); // Log para confirmar si llega la solicitud
     try{
         const {email,password} = req.body;
 
@@ -21,7 +22,9 @@ router.post("/registro",async (req,res) =>{
 
 
     }catch(error){
-        res.status(500).json({message:"Error en el servidor"});
+        console.error('Error en el registro:', error.message); // Asegúrate de que se vea el mensaje de error
+        console.error(error); // Log adicional para obtener detalles del error
+        res.status(500).json({ message: 'Error en el registro', error: error.message }); // Devuelve el mensaje de error
     }
 });
 
@@ -48,3 +51,5 @@ router.post("/login", async(req,res) =>{
     }
 
 });
+
+module.exports = router;
