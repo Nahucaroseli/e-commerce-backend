@@ -8,14 +8,14 @@ const router = express.Router();
 router.post("/registro",async (req,res) =>{
     console.log('Solicitud recibida:', req.body); // Log para confirmar si llega la solicitud
     try{
-        const {email,password} = req.body;
+        const {username,email,password} = req.body;
 
         const existingUser = await User.findOne({email});
         if(existingUser){
             return res.status(400).json({message:"Usuario ya registrado"});
         }
 
-        const user = new User({email,password});
+        const user = new User({username,email,password});
         await user.save();
 
         res.status(201).json({message:"Usuario registrado!"});
