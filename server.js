@@ -11,7 +11,7 @@ dotenv.config();
 
 const app = express();
 
-mongoose.connect(process.env.MONGO_URI,{useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("Conectado"))
 .catch((error)=> console.log("No se ha conectado, ocurrio un problema",error));
 
@@ -27,7 +27,6 @@ const authRoutes = require('./routes/auth');
 
 app.use('/api/auth',authRoutes);
 
-console.log(process.env.MONGO_URI);
 
 app.get("/", (req, res) => {
   res.send("Servidor funcionando");
@@ -44,4 +43,3 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Error inesperado' });
   });
 
-module.exports = (req, res) => app(req, res);
