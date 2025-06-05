@@ -29,7 +29,9 @@ app.use('/api/auth',authRoutes);
 
 console.log(process.env.MONGO_URI);
 
-
+app.get("/", (req, res) => {
+  res.send("Servidor funcionando");
+});
 
 
 // Inicializar servidor
@@ -42,3 +44,4 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Error inesperado' });
   });
 
+module.exports = (req, res) => app(req, res);
