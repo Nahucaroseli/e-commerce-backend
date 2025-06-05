@@ -18,7 +18,8 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use(cors({
   origin: "https://compra-facil.netlify.app",
-  methods: ["GET", "POST"]
+  methods: ["GET", "POST"],
+  credentials: true
 }));
 
 
