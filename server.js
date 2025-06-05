@@ -33,13 +33,9 @@ app.get("/", (req, res) => {
 });
 
 
-// Inicializar servidor
-const PORT = 5000;
-app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
-
-
 app.use((err, req, res, next) => {
     console.error('Error no manejado:', err);
     res.status(500).json({ message: 'Error inesperado' });
   });
 
+module.exports = (req, res) => app(req, res);
