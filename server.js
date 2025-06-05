@@ -16,11 +16,13 @@ mongoose.connect(process.env.MONGO_URI)
 .catch((error)=> console.log("No se ha conectado, ocurrio un problema",error));
 
 
+app.use(cors({
+  origin: "https://compra-facil.netlify.app",
+  methods: ["GET", "POST"]
+}));
 
-app.use(cors());
+
 app.use(express.json());
-
-
 
 
 const authRoutes = require('./routes/auth');
