@@ -38,4 +38,4 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Error inesperado' });
   });
 
-module.exports = (req, res) => app(req, res);
+module.exports = app;
